@@ -32,11 +32,12 @@ plans.forEach((p,i)=>{p.tabIndex=0;p.setAttribute('role','radio');p.onclick=()=>
 document.querySelector('.plans').setAttribute('role','radiogroup');document.querySelector('.plans').setAttribute('aria-label','Subscription duration');
 
 function showModal(id){previousFocus=document.activeElement;activeModal=$(id);activeModal.classList.add('open');activeModal.setAttribute('aria-hidden','false');document.body.classList.add('dialog-open');for(const el of document.querySelectorAll('.top,.hero,.trust-pills,main,.bottom,.wa-support,.site-foot'))el.inert=true;activeModal.querySelector('button').focus();}
-function closeModal(){if(!activeModal)return;if(activeModal.id==='promoModal')storage.set('promo_shown','1');activeModal.classList.remove('open');activeModal.setAttribute('aria-hidden','true');activeModal=null;document.body.classList.remove('dialog-open');document.querySelectorAll('[inert]').forEach(el=>el.inert=false);previousFocus?.focus();}
+function closeModal(){if(!activeModal)return;const closedId=activeModal.id;if(closedId==='promoModal')storage.set('promo_shown','1');if(closedId==='trustModal'){storage.set('trust_shown','1');}activeModal.classList.remove('open');activeModal.setAttribute('aria-hidden','true');activeModal=null;document.body.classList.remove('dialog-open');document.querySelectorAll('[inert]').forEach(el=>el.inert=false);previousFocus?.focus();if(closedId==='trustModal')schedulePromo(3500);}
 function openCheckout(){if(activeModal)closeModal();$('mn').textContent=selected.name;$('mp').textContent=money(selected.price);if(promoEmail&&!$('customerEmail').value)$('customerEmail').value=promoEmail;showModal('modal');}
 document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=openCheckout);
 $('close').onclick=closeModal;$('promoClose').onclick=closeModal;
-[$('modal'),$('promoModal')].forEach(m=>{m.setAttribute('aria-hidden','true');m.onclick=e=>{if(e.target===m)closeModal();};});
+$('trustClose').onclick=closeModal;$('trustCta').onclick=()=>{closeModal();$('plans').scrollIntoView({behavior:'smooth',block:'start'});};
+[$('modal'),$('promoModal'),$('trustModal')].forEach(m=>{m.setAttribute('aria-hidden','true');m.onclick=e=>{if(e.target===m)closeModal();};});
 document.addEventListener('keydown',e=>{if(!activeModal)return;if(e.key==='Escape')closeModal();if(e.key==='Tab'){const fields=[...activeModal.querySelectorAll('button,input,a[href]')];const first=fields[0],last=fields.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 
 function validField(id){const input=$(id);input.required=true;input.setCustomValidity('');if(!input.value.trim())input.setCustomValidity('Please complete this field.');else if(input.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()))input.setCustomValidity('Please enter a valid email address.');return input.reportValidity();}
@@ -60,7 +61,8 @@ $('confirm').onclick=()=>{for(const id of ['customerName','customerEmail','prefe
 document.querySelectorAll('.faq-q').forEach((btn,i)=>{const answer=btn.closest('.faq-item').querySelector('.faq-a');answer.id='faq-answer-'+i;btn.setAttribute('aria-controls',answer.id);btn.setAttribute('aria-expanded',String(btn.closest('.faq-item').classList.contains('open')));btn.onclick=()=>{const item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open');x.querySelector('button').setAttribute('aria-expanded','false');});item.classList.toggle('open',!wasOpen);btn.setAttribute('aria-expanded',String(!wasOpen));};});
 
 selectPlan(discountActive?PROMO_PLAN:DEFAULT_PLAN);
-if(!storage.get('promo_shown')&&!discountActive)setTimeout(()=>{if(!activeModal)showModal('promoModal');},650);
+function schedulePromo(ms){if(storage.get('promo_shown')||discountActive)return;setTimeout(()=>{if(!activeModal&&!storage.get('promo_shown'))showModal('promoModal');},ms);}
+if(!storage.get('trust_shown'))setTimeout(()=>{if(!activeModal)showModal('trustModal');},700);else schedulePromo(650);
 if($('yr'))$('yr').textContent=new Date().getFullYear();
 
 if(document.modelContext?.registerTool){try{Promise.resolve(document.modelContext.registerTool({name:'select_subscription_plan',description:'Select a Malik Data Centre subscription duration and update its displayed price. Does not submit an order.',inputSchema:{type:'object',properties:{months:{type:'integer',enum:[1,4,7,12]}},required:['months'],additionalProperties:false},annotations:{readOnlyHint:false},execute:({months})=>{if(![1,4,7,12].includes(months))throw new Error('Invalid duration');selectPlan(months===1?'1 Month':months+' Months');return {...selected,currency:'PKR'};}})).catch(()=>{});}catch{}}

@@ -1190,6 +1190,32 @@ body.dialog-open{overflow:hidden}
   .modal,.promo-modal{align-items:center}
   .sheet,.promo-sheet{border-radius:22px;max-width:460px}
 }
+
+/* —— Trust popup —— */
+.trust-modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(8,8,12,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.trust-modal.open{display:flex}
+.trust-card{position:relative;width:100%;max-width:380px;border-radius:26px;padding:26px 20px 20px;color:#fff;text-align:center;overflow:hidden;
+  background:radial-gradient(120% 80% at 100% 0%,rgba(124,58,237,.55),transparent 60%),radial-gradient(90% 70% at 0% 100%,rgba(236,72,153,.35),transparent 60%),#0b0b10;
+  box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08);animation:trustIn .45s cubic-bezier(.2,.9,.25,1.2) both}
+@keyframes trustIn{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:none}}
+.trust-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+.trust-logo{display:block;width:58px;height:58px;border-radius:16px;margin:0 auto 12px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 30px rgba(124,58,237,.45)}
+.trust-kicker{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.14em;color:#c4b5fd;background:rgba(167,139,250,.14);border:1px solid rgba(167,139,250,.3);padding:6px 11px;border-radius:999px}
+.trust-nos{display:flex;flex-direction:column;gap:9px;margin:18px 0 16px}
+.trust-no{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);text-align:left;font-size:15px;font-weight:850;letter-spacing:.01em;animation:noIn .5s both}
+.trust-no:nth-child(1){animation-delay:.15s}.trust-no:nth-child(2){animation-delay:.28s}.trust-no:nth-child(3){animation-delay:.41s}
+@keyframes noIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+.trust-x{width:26px;height:26px;border-radius:50%;background:#ef4444;color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900;flex:none;box-shadow:0 0 14px rgba(239,68,68,.55)}
+.trust-yes{padding:16px 14px;border-radius:16px;background:linear-gradient(135deg,#16a34a,#22c55e);box-shadow:0 12px 30px rgba(34,197,94,.35);animation:noIn .5s .56s both}
+.trust-yes .ck{width:34px;height:34px;border-radius:50%;background:#fff;color:#16a34a;display:grid;place-items:center;font-size:18px;font-weight:900;margin:0 auto 8px}
+.trust-yes b{display:block;font-size:12px;letter-spacing:.12em;opacity:.92}
+.trust-yes strong{display:block;font-size:19px;line-height:1.2;margin-top:4px;letter-spacing:-.3px}
+.trust-yes strong span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.trust-cta{width:100%;height:50px;margin-top:16px;border:0;border-radius:14px;background:#fff;color:#0b0b10;font-size:15px;font-weight:850;cursor:pointer;transition:transform .15s}
+.trust-cta:active{transform:scale(.98)}
+.trust-wa{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12.5px;color:#d4d4d8;text-decoration:none;font-weight:650}
+.trust-wa i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+@media(prefers-reduced-motion:reduce){.trust-card,.trust-no,.trust-yes{animation:none}}
 </style>
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
@@ -1562,6 +1588,27 @@ body.dialog-open{overflow:hidden}
         <strong id="bp">PKR 6,500</strong>
       </div>
       <button class="buy" data-buy>Continue <span class="cta-arrow" aria-hidden="true">→</span></button>
+    </div>
+  </div>
+
+  <!-- Trust popup -->
+  <div class="trust-modal" id="trustModal" aria-hidden="true">
+    <div class="trust-card" role="dialog" aria-modal="true" aria-labelledby="trustTitle">
+      <button class="trust-close" id="trustClose" type="button" aria-label="Close">×</button>
+      <img class="trust-logo" src="assets/logo.png" alt="Malik Data Centre">
+      <span class="trust-kicker" id="trustTitle">MALIK DATA CENTRE PROMISE</span>
+      <div class="trust-nos">
+        <div class="trust-no"><span class="trust-x">✕</span>NO TEAM PLAN</div>
+        <div class="trust-no"><span class="trust-x">✕</span>NO LOGOUT ISSUE</div>
+        <div class="trust-no"><span class="trust-x">✕</span>NO SHARED PLAN</div>
+      </div>
+      <div class="trust-yes">
+        <div class="ck">✓</div>
+        <b>WE ARE PROVIDING</b>
+        <strong>INDIVIDUAL PLAN ON YOUR <span>PRIVATE EMAIL</span></strong>
+      </div>
+      <button class="trust-cta" id="trustCta" type="button">View Plans →</button>
+      <a class="trust-wa" href="https://wa.me/923445739206" target="_blank" rel="noopener"><i></i>Questions? Chat on WhatsApp</a>
     </div>
   </div>
 
