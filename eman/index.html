@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<title>Malik Data Centre — Adobe Creative Cloud All Apps</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:#f2f2f2;
+  color:#111;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.45;
+}
+.app{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  margin:0 auto;
+  background:#fff;
+  overflow-x:hidden;
+  padding-bottom:96px;
+  position:relative;
+}
+
+/* —— Top bar —— */
+.top{
+  height:56px;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  z-index:40;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{
+  width:36px;height:36px;
+  object-fit:contain;
+  border-radius:8px;
+}
+.brand-text{font-size:13px;font-weight:800;letter-spacing:-.3px}
+.secure{
+  font-size:10px;
+  font-weight:700;
+  color:#16a34a;
+  background:#f0fdf4;
+  padding:5px 9px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+/* —— Layout helpers —— */
+.pad{padding:0 16px}
+.section{padding:28px 0;border-bottom:1px solid #f0f0f0}
+.h{font-size:20px;font-weight:850;letter-spacing:-.6px;line-height:1.2}
+.sub{font-size:12.5px;color:#6b6b6b;margin-top:5px;line-height:1.45}
+
+/* —— Hero —— */
+.hero{padding:18px 0 8px}
+.hero-card{
+  position:relative;
+  overflow:hidden;
+  background:#0a0a0a;
+  color:#fff;
+  border-radius:20px;
+  padding:24px 20px 22px;
+  min-height:360px;
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+}
+.hero-card::before{
+  content:"";
+  position:absolute;
+  width:240px;height:240px;
+  border:42px solid rgba(255,255,255,.04);
+  border-radius:50%;
+  right:-130px;top:-100px;
+}
+.hero-card::after{
+  content:"";
+  position:absolute;
+  width:160px;height:160px;
+  background:linear-gradient(135deg,#7c3aed,#e12db6);
+  border-radius:50%;
+  right:-60px;bottom:-80px;
+  opacity:.55;
+  filter:blur(1px);
+}
+.mini{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.1);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.04em;
+  color:#e5e5e5;
+}
+.hero h1{
+  font-size:34px;
+  line-height:1.05;
+  letter-spacing:-1.4px;
+  margin-top:18px;
+  position:relative;z-index:2;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,#a78bfa,#e879f9,#fb7185);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero p{
+  font-size:13px;
+  color:#b3b3b3;
+  line-height:1.5;
+  margin-top:12px;
+  max-width:290px;
+  position:relative;z-index:2;
+}
+.apps-orbit{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+  position:relative;z-index:2;
+  overflow:hidden;
+}
+.app-bubble{
+  width:42px;height:42px;
+  border-radius:11px;
+  background:#fff;
+  padding:5px;
+  flex:none;
+  box-shadow:0 6px 16px rgba(0,0,0,.2);
+}
+.app-bubble img{width:100%;height:100%;object-fit:contain}
+.price-line{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  margin-top:22px;
+  position:relative;z-index:3;
+}
+.price-line small{font-size:12px;color:#999}
+.price-line strong{font-size:26px;letter-spacing:-.8px;font-weight:850}
+.cta{
+  height:46px;
+  border:0;
+  border-radius:12px;
+  background:#fff;
+  color:#0a0a0a;
+  width:100%;
+  font-size:14px;
+  font-weight:850;
+  margin-top:16px;
+  position:relative;z-index:3;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+  cursor:pointer;
+  transition:transform .15s ease;
+}
+.cta:active{transform:scale(.97)}
+.quick{
+  display:flex;
+  gap:6px;
+  margin-top:14px;
+  flex-wrap:wrap;
+  position:relative;z-index:3;
+}
+.quick span{
+  font-size:11px;
+  padding:6px 10px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  color:#d4d4d4;
+  font-weight:600;
+}
+.reseller{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  font-size:12px;
+  color:#a3a3a3;
+  position:relative;z-index:3;
+}
+.reseller b{
+  width:18px;height:18px;
+  border-radius:50%;
+  background:#fff;
+  color:#0a0a0a;
+  display:grid;
+  place-items:center;
+  font-size:10px;
+  flex:none;
+}
+
+/* —— Feature grid —— */
+.feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:16px;
+}
+.feature{
+  border:1px solid #ebebeb;
+  border-radius:14px;
+  padding:16px 14px;
+  background:#fafafa;
+  min-height:100px;
+  transition:transform .15s ease;
+}
+.feature:active{transform:scale(.98)}
+.fi{
+  width:32px;height:32px;
+  background:#111;
+  color:#fff;
+  border-radius:9px;
+  display:grid;
+  place-items:center;
+  margin-bottom:10px;
+}
+.fi svg{width:16px;height:16px}
+.feature strong{font-size:13px;font-weight:750;display:block}
+.feature p{font-size:11.5px;color:#666;line-height:1.4;margin-top:4px}
+
+/* —— App strip —— */
+.app-strip{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  margin-top:16px;
+  padding-bottom:4px;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.app-strip::-webkit-scrollbar{display:none}
+.app-item{min-width:68px;text-align:center}
+.app-item div{
+  width:52px;height:52px;
+  border-radius:14px;
+  background:#f5f5f5;
+  margin:0 auto;
+  padding:8px;
+  border:1px solid #eee;
+}
+.app-item img{width:100%;height:100%;object-fit:contain}
+.app-item span{display:block;font-size:11px;color:#555;margin-top:7px;font-weight:600}
+
+/* —— Plans —— */
+.plans{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.plan{
+  position:relative;
+  border:1.5px solid #e5e5e5;
+  border-radius:14px;
+  padding:16px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:72px;
+  background:#fff;
+  cursor:pointer;
+  transition:border-color .15s,background .15s,box-shadow .15s;
+}
+.plan.selected{
+  border-color:#111;
+  background:#fafafa;
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+.plan.selected::after{
+  content:"✓";
+  position:absolute;
+  right:12px;top:-9px;
+  background:#111;
+  color:#fff;
+  border-radius:50%;
+  width:20px;height:20px;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:800;
+}
+.popular{
+  position:absolute;
+  top:8px;right:36px;
+  background:#111;
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  padding:4px 7px;
+  border-radius:4px;
+  letter-spacing:.02em;
+}
+.pl{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+.radio{
+  width:20px;height:20px;
+  border:2px solid #ccc;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  flex:none;
+  transition:border-color .15s;
+}
+.selected .radio{border-color:#111}
+.selected .radio::after{
+  content:"";
+  width:10px;height:10px;
+  background:#111;
+  border-radius:50%;
+}
+.pn{font-size:14px;font-weight:800}
+.pd{font-size:11.5px;color:#777;margin-top:2px}
+.pp{text-align:right;flex:none;margin-left:10px}
+.pp strong{display:block;font-size:16px;font-weight:850}
+.pp span{font-size:11px;color:#888}
+
+/* —— Why us —— */
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:16px;
+}
+.why-card{
+  border:1px solid #ebebeb;
+  border-radius:14px;
+  padding:16px 13px;
+  background:#fafafa;
+  min-height:108px;
+}
+.why-icon{
+  width:34px;height:34px;
+  border-radius:10px;
+  background:#111;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  margin-bottom:10px;
+}
+.why-icon svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.why-card b{display:block;font-size:13px;font-weight:750}
+.why-card span{display:block;font-size:11.5px;color:#666;line-height:1.4;margin-top:4px}
+.why-guarantee{
+  margin-top:12px;
+  padding:16px;
+  border-radius:14px;
+  background:#0a0a0a;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.why-shield{
+  width:40px;height:40px;
+  border-radius:12px;
+  background:#fff;
+  color:#0a0a0a;
+  display:grid;
+  place-items:center;
+  flex:none;
+}
+.why-shield svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+.why-guarantee b{display:block;font-size:13.5px;font-weight:750}
+.why-guarantee span{display:block;color:#b0b0b0;font-size:11.5px;line-height:1.4;margin-top:3px}
+.why-reseller{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:12px;
+  padding:14px;
+  border:1px solid #ebebeb;
+  border-radius:14px;
+  background:#fafafa;
+}
+.reseller-check{
+  width:28px;height:28px;
+  border-radius:8px;
+  background:#111;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  font-weight:900;
+  flex:none;
+}
+.why-reseller b{font-size:13px}
+.why-reseller span{display:block;font-size:11.5px;color:#666;margin-top:2px}
+
+/* —— How it works —— */
+.how-steps{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.how-step{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  border:1px solid #ebebeb;
+  border-radius:14px;
+  padding:14px;
+  background:#fafafa;
+}
+.how-num{
+  width:30px;height:30px;
+  border-radius:9px;
+  background:#111;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  font-weight:850;
+  flex:none;
+}
+.how-step b{display:block;font-size:13.5px;font-weight:750}
+.how-step span{display:block;font-size:12px;color:#666;line-height:1.45;margin-top:3px}
+.how-note{
+  margin-top:12px;
+  padding:13px 14px;
+  border-radius:12px;
+  background:#f5f5f5;
+  font-size:12px;
+  color:#555;
+  line-height:1.5;
+}
+
+/* —— FAQ —— */
+.faq-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.faq-item{
+  border:1px solid #e8e8e8;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+.faq-q{
+  width:100%;
+  border:0;
+  background:#fff;
+  color:#111;
+  padding:15px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  text-align:left;
+  font:750 13.5px -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  cursor:pointer;
+}
+.faq-q span:last-child{
+  width:22px;height:22px;
+  border-radius:50%;
+  background:#f0f0f0;
+  display:grid;
+  place-items:center;
+  font-size:15px;
+  font-weight:500;
+  flex:none;
+  transition:transform .2s;
+}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .22s ease}
+.faq-a>div{overflow:hidden}
+.faq-a p{padding:0 14px 14px;font-size:12.5px;line-height:1.55;color:#555}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-item.open .faq-q span:last-child{transform:rotate(45deg);background:#111;color:#fff}
+
+/* —— Problem / Solution —— */
+.problem-card,.solution-card{
+  margin-top:14px;
+  border-radius:14px;
+  padding:16px;
+}
+.problem-card{
+  display:flex;
+  gap:12px;
+  background:#fef2f2;
+  border:1px solid #fecaca;
+}
+.problem-icon{
+  width:32px;height:32px;
+  border-radius:9px;
+  background:#fee2e2;
+  color:#dc2626;
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  font-weight:800;
+  flex:none;
+}
+.problem-card b,.solution-card b{display:block;font-size:13.5px;font-weight:750}
+.problem-card span{display:block;font-size:12px;color:#7f1d1d;line-height:1.5;margin-top:4px}
+.solution-card{
+  background:#0a0a0a;
+  color:#fff;
+  border:1px solid #0a0a0a;
+}
+.solution-top{display:flex;gap:12px}
+.solution-icon{
+  width:32px;height:32px;
+  border-radius:9px;
+  background:#fff;
+  color:#0a0a0a;
+  display:grid;
+  place-items:center;
+  font-size:14px;
+  font-weight:900;
+  flex:none;
+}
+.solution-card span{color:#b0b0b0;display:block;font-size:12px;line-height:1.5;margin-top:4px}
+.value-note{
+  margin-top:12px;
+  padding:12px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+}
+.value-note strong{font-size:12.5px;display:block}
+.value-note span{color:#a3a3a3;font-size:11.5px;display:block;margin-top:3px;line-height:1.45}
+
+/* —— Difference table —— */
+.diff-head{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:16px;
+}
+.other-head,.us-head{
+  padding:11px 10px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12.5px;
+  font-weight:750;
+}
+.other-head{background:#fef2f2;color:#b91c1c}
+.us-head{background:#f0fdf4;color:#15803d}
+.xmark,.checkmark{
+  width:22px;height:22px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  font-weight:900;
+  flex:none;
+}
+.xmark{background:#fecaca;color:#b91c1c}
+.checkmark{background:#bbf7d0;color:#15803d}
+.diff-list{
+  margin-top:8px;
+  border:1px solid #ebebeb;
+  border-radius:12px;
+  overflow:hidden;
+}
+.diff-row{display:grid;grid-template-columns:1fr 1fr}
+.diff-side{
+  min-height:64px;
+  padding:12px 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.diff-side.other{background:#fffafa;border-right:1px solid #f0f0f0}
+.diff-side.us{background:#f9fdf9}
+.diff-side small{
+  display:block;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:#888;
+  margin-bottom:2px;
+}
+.diff-side b{display:block;font-size:12.5px;line-height:1.3}
+.diff-bottom{
+  margin-top:12px;
+  padding:14px;
+  background:#f5f5f5;
+  border-radius:12px;
+}
+.diff-bottom b{display:block;font-size:13px}
+.diff-bottom span{display:block;color:#555;font-size:12px;line-height:1.5;margin-top:4px}
+
+/* —— Reviews —— */
+.review-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.rating-badge{
+  background:#111;
+  color:#fff;
+  border-radius:12px;
+  padding:10px 12px;
+  text-align:center;
+  min-width:58px;
+  flex:none;
+}
+.rating-badge strong{display:block;font-size:18px}
+.rating-badge span{font-size:10px;letter-spacing:1px;color:#fbbf24}
+.review-summary{
+  margin-top:14px;
+  border:1px solid #ebebeb;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#fafafa;
+}
+.big-rating{font-size:28px;font-weight:900;letter-spacing:-1px}
+.big-rating span{font-size:13px;color:#888;font-weight:600}
+.rating-copy b{display:block;font-size:13px}
+.rating-copy span{display:block;font-size:11.5px;color:#666;margin-top:3px;line-height:1.4}
+.reviews{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  margin-top:14px;
+  padding-bottom:4px;
+  scrollbar-width:none;
+}
+.reviews::-webkit-scrollbar{display:none}
+.review{
+  min-width:260px;
+  border:1px solid #ebebeb;
+  border-radius:14px;
+  padding:16px;
+  background:#fff;
+  position:relative;
+}
+.review::before{
+  content:"“";
+  position:absolute;
+  right:14px;top:8px;
+  font-size:36px;
+  color:#f0f0f0;
+  font-weight:900;
+  line-height:1;
+}
+.stars{font-size:12px;letter-spacing:1px;color:#f59e0b}
+.review p{font-size:13px;line-height:1.5;color:#444;margin-top:8px}
+.review b{
+  display:flex;
+  align-items:center;
+  font-size:12px;
+  margin-top:12px;
+  color:#222;
+}
+.avatar-mini{
+  width:26px;height:26px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  display:inline-grid;
+  place-items:center;
+  font-size:10px;
+  font-weight:700;
+  margin-right:8px;
+  flex:none;
+}
+.view-reviews{
+  height:44px;
+  margin-top:14px;
+  border:1.5px solid #e0e0e0;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-decoration:none;
+  color:#111;
+  font-size:13.5px;
+  font-weight:750;
+  background:#fff;
+  transition:background .15s;
+}
+.view-reviews:active{background:#f5f5f5}
+
+/* —— Final CTA —— */
+.final{text-align:center;padding:32px 0 12px}
+.final h2{font-size:24px;letter-spacing:-.8px;font-weight:850}
+.final p{font-size:13px;color:#666;line-height:1.5;margin-top:8px;max-width:280px;margin-left:auto;margin-right:auto}
+.final .cta{background:#111;color:#fff;margin-top:18px;max-width:280px}
+
+/* —— Sticky bottom —— */
+.bottom{
+  position:fixed;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:430px;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-top:1px solid #e8e8e8;
+  z-index:50;
+}
+.bottom-in{display:flex;align-items:center;gap:12px}
+.selected-info{flex:1;min-width:0}
+.selected-info small{font-size:11px;color:#777;display:block;font-weight:600}
+.selected-info strong{font-size:18px;display:block;margin-top:1px;font-weight:850}
+.buy{
+  height:48px;
+  padding:0 22px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  font-size:14px;
+  font-weight:850;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  cursor:pointer;
+  transition:transform .15s;
+  flex:none;
+}
+.buy:active{transform:scale(.97)}
+
+/* —— Modal —— */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:none;
+  align-items:flex-end;
+  z-index:60;
+}
+.modal.open{display:flex}
+.sheet{
+  width:100%;
+  max-width:430px;
+  margin:0 auto;
+  background:#fff;
+  border-radius:20px 20px 0 0;
+  padding:16px 14px calc(12px + env(safe-area-inset-bottom));
+  max-height:calc(100dvh - 12px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  animation:sheetUp .28s ease both;
+}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:none}}
+.sheet-top{display:flex;justify-content:space-between;align-items:center}
+.sheet h3{font-size:18px;font-weight:850}
+.close{
+  border:0;
+  width:32px;height:32px;
+  border-radius:50%;
+  background:#f0f0f0;
+  font-size:18px;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+}
+.order{
+  border:1px solid #e8e8e8;
+  border-radius:12px;
+  margin-top:10px;
+  padding:9px 12px;
+}
+.line{
+  display:flex;
+  justify-content:space-between;
+  padding:7px 0;
+  font-size:12.5px;
+  gap:10px;
+}
+.line.total{
+  border-top:1px solid #eee;
+  margin-top:2px;
+  padding-top:9px;
+  font-size:14px;
+  font-weight:850;
+}
+.checkout-fields{
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.checkout-fields label{
+  font-size:12px;
+  font-weight:750;
+  color:#333;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.checkout-fields input{
+  width:100%;
+  height:42px;
+  border:1.5px solid #e0e0e0;
+  border-radius:10px;
+  padding:0 14px;
+  font:14px -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+.checkout-fields input:focus{
+  border-color:#111;
+  box-shadow:0 0 0 3px rgba(0,0,0,.06);
+}
+.checkout-note{
+  font-size:11px;
+  line-height:1.4;
+  color:#666;
+  background:#f5f5f5;
+  border-radius:10px;
+  padding:9px 10px;
+}
+.confirm{
+  width:100%;
+  height:50px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  font-size:14px;
+  font-weight:850;
+  margin-top:14px;
+  cursor:pointer;
+  transition:transform .15s;
+}
+.confirm:active{transform:scale(.98)}
+
+/* —— WhatsApp floating —— */
+.wa-support{
+  position:fixed;
+  right:14px;
+  bottom:90px;
+  z-index:45;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px 8px 8px;
+  border-radius:999px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:750;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+.wa-icon{
+  width:34px;height:34px;
+  border-radius:50%;
+  background:#25D366;
+  display:grid;
+  place-items:center;
+  flex:none;
+}
+.wa-icon img{
+  width:18px;height:18px;
+  filter:brightness(0) invert(1);
+}
+
+/* —— Trust bar under hero —— */
+.trust-pills{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:14px 0 6px;
+  scrollbar-width:none;
+}
+.trust-pills::-webkit-scrollbar{display:none}
+.trust-pills span{
+  white-space:nowrap;
+  background:#f5f5f5;
+  border:1px solid #e8e8e8;
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:11.5px;
+  font-weight:650;
+  color:#444;
+}
+
+/* —— Responsive —— */
+@media(max-width:360px){
+  .pad{padding:0 12px}
+  .hero-card{padding:20px 16px 18px}
+  .hero h1{font-size:30px}
+  .feature-grid,.why-grid{gap:8px}
+  .buy{padding:0 16px;font-size:13px}
+  .bottom{padding-left:10px;padding-right:10px}
+}
+@media(max-width:320px){
+  .hero h1{font-size:27px}
+  .feature-grid,.why-grid{grid-template-columns:1fr}
+  .diff-head,.diff-row{grid-template-columns:1fr}
+  .diff-side.other{border-right:0;border-bottom:1px solid #f0f0f0}
+}
+@media(min-width:431px){
+  body{padding:24px 0;background:#e8e8e8}
+  .app{box-shadow:0 0 60px rgba(0,0,0,.1);border-radius:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* —— Promo modal —— */
+.promo-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:70;
+  padding:0;
+}
+.promo-modal.open{display:flex}
+.promo-sheet{
+  width:100%;
+  max-width:430px;
+  background:#fff;
+  border-radius:22px 22px 0 0;
+  padding:22px 18px calc(20px + env(safe-area-inset-bottom));
+  position:relative;
+  animation:sheetUp .3s ease both;
+  box-shadow:0 -12px 40px rgba(0,0,0,.18);
+}
+.promo-close{
+  position:absolute;
+  top:14px;right:14px;
+  border:0;
+  width:34px;height:34px;
+  border-radius:50%;
+  background:#f2f2f2;
+  font-size:18px;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  color:#333;
+  z-index:2;
+}
+.promo-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#111;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.04em;
+  padding:6px 11px;
+  border-radius:999px;
+  margin-bottom:14px;
+}
+.promo-sheet h2{
+  font-size:24px;
+  font-weight:850;
+  letter-spacing:-.7px;
+  line-height:1.15;
+  margin-bottom:6px;
+  padding-right:36px;
+}
+.promo-sheet h2 span{
+  color:#16a34a;
+}
+.promo-sub{
+  font-size:13.5px;
+  color:#666;
+  line-height:1.45;
+  margin-bottom:18px;
+}
+.promo-price-box{
+  background:#f7f7f7;
+  border:1px solid #ebebeb;
+  border-radius:14px;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+}
+.promo-price-box .label{
+  font-size:12px;
+  color:#777;
+  font-weight:600;
+}
+.promo-price-box .old{
+  font-size:14px;
+  color:#999;
+  text-decoration:line-through;
+  margin-right:8px;
+}
+.promo-price-box .new{
+  font-size:22px;
+  font-weight:850;
+  letter-spacing:-.5px;
+  color:#111;
+}
+.promo-price-box .save{
+  font-size:11px;
+  font-weight:750;
+  color:#16a34a;
+  background:#ecfdf5;
+  padding:4px 8px;
+  border-radius:6px;
+}
+.promo-field{
+  margin-bottom:12px;
+}
+.promo-field label{
+  display:block;
+  font-size:12px;
+  font-weight:750;
+  color:#333;
+  margin-bottom:6px;
+}
+.promo-field input{
+  width:100%;
+  height:48px;
+  border:1.5px solid #e0e0e0;
+  border-radius:12px;
+  padding:0 14px;
+  font:14px -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+.promo-field input:focus{
+  border-color:#111;
+  box-shadow:0 0 0 3px rgba(0,0,0,.06);
+}
+.promo-cta{
+  width:100%;
+  height:52px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  font-size:15px;
+  font-weight:850;
+  cursor:pointer;
+  transition:transform .15s;
+  margin-top:4px;
+}
+.promo-cta:active{transform:scale(.98)}
+.promo-note{
+  text-align:center;
+  font-size:11.5px;
+  color:#888;
+  margin-top:12px;
+  line-height:1.4;
+}
+.promo-discount-tag{
+  display:inline-block;
+  background:#ecfdf5;
+  color:#15803d;
+  font-size:11px;
+  font-weight:750;
+  padding:3px 8px;
+  border-radius:6px;
+  margin-left:6px;
+  vertical-align:middle;
+}
+
+.promo-sheet{max-height:calc(100dvh - 12px);overflow-y:auto}
+body.dialog-open{overflow:hidden}
+.plan:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #8b5cf6;outline-offset:3px}
+.popular{top:-9px;right:36px}
+.checkout-fields input,.promo-field input{font-size:16px}
+@media(max-width:360px){.promo-price-box{padding:12px;gap:5px}.promo-price-box .new{font-size:20px}.promo-price-box .old{font-size:12px}}
+/* motion polish */
+.hero-card::before{border-color:rgba(255,255,255,.04);border-top-color:rgba(255,255,255,.085);border-right-color:rgba(255,255,255,.025);animation:heroWheel 18s linear infinite}
+.hero-card::after{animation:heroGlow 14s linear infinite;transform-origin:35% 35%}
+@keyframes heroWheel{to{transform:rotate(360deg)}}
+@keyframes heroGlow{50%{transform:rotate(180deg) translate(12px,-8px)}100%{transform:rotate(360deg)}}
+.cta-pop,.cta-arrow{display:inline-block}
+.cta.animate-pop .cta-pop{animation:labelPop .85s cubic-bezier(.2,.9,.25,1.3) both}
+.cta.animate-pop .cta-arrow{animation:arrowPop .85s .15s cubic-bezier(.2,.9,.25,1.3) both}
+@keyframes labelPop{0%{opacity:0;transform:translateY(10px) scale(.75)}65%{opacity:1;transform:translateY(-2px) scale(1.07)}100%{transform:none}}
+@keyframes arrowPop{0%{opacity:0;transform:translateX(-10px) scale(.6)}70%{opacity:1;transform:translateX(4px) scale(1.15)}100%{transform:none}}
+.app-item{width:68px;flex:0 0 68px}.review{width:260px;flex:0 0 260px}
+.marquee-shell{position:relative}.marquee-shell .app-strip,.marquee-shell .reviews{scroll-behavior:auto;overscroll-behavior-x:contain}
+
+.rating-badge .rating-stars{display:block;position:relative;color:#595959;width:max-content;white-space:nowrap}
+.rating-badge .rating-stars-fill{position:absolute;inset:0 auto 0 0;display:block;overflow:hidden;width:98%;color:#fbbf24}
+.rating-number{font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-card::before,.hero-card::after,.cta-pop,.cta-arrow{animation:none!important}}
+
+/* Consistent review baselines and restrained CTA motion. */
+.review{display:flex;flex-direction:column;align-self:stretch}
+.review p{flex:1;margin-bottom:12px}
+.review b{margin-top:auto;min-height:30px;align-items:center}
+.trust-pills span{flex:0 0 auto}
+.cta-arrow,.cta.animate-pop .cta-arrow{animation:ctaNudge 2.2s cubic-bezier(.45,0,.55,1) infinite;will-change:transform}
+@keyframes ctaNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.comparison-visible .other-head .xmark{animation:wrongShake .65s .1s ease-in-out both}
+.comparison-visible .diff-side.other .xmark{animation:wrongShake .65s ease-in-out both;animation-delay:var(--row-delay)}
+.comparison-visible .diff-side.other{animation:warningTint 1.3s ease-out both;animation-delay:var(--row-delay)}
+.comparison-visible .us-head{animation:trustGlow 3s ease-in-out infinite}
+.comparison-visible .diff-side.us{animation:positiveTint 1.5s ease-out both;animation-delay:calc(var(--row-delay) + 200ms)}
+.comparison-visible .diff-side.us .checkmark{animation:checkReveal .7s cubic-bezier(.2,.9,.3,1.3) both;animation-delay:calc(var(--row-delay) + 200ms)}
+@keyframes wrongShake{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-3px) rotate(-8deg)}40%{transform:translateX(3px) rotate(8deg)}60%{transform:translateX(-2px) rotate(-5deg)}80%{transform:translateX(2px) rotate(5deg)}}
+@keyframes warningTint{0%{background:#fee2e2}100%{background:#fffafa}}
+@keyframes positiveTint{0%{background:#bbf7d0}100%{background:#f9fdf9}}
+@keyframes checkReveal{0%{transform:scale(.7);opacity:.4}65%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes trustGlow{0%,100%{box-shadow:0 0 0 1px rgba(34,197,94,.12),0 0 8px rgba(34,197,94,.04)}50%{box-shadow:0 0 0 1px rgba(34,197,94,.3),0 0 18px rgba(34,197,94,.18)}}
+@media(prefers-reduced-motion:reduce){.cta-arrow,.comparison *{animation:none!important}}
+
+.apps-orbit{overflow-x:auto;scrollbar-width:none;scroll-behavior:auto;overscroll-behavior-x:contain}
+.apps-orbit::-webkit-scrollbar{display:none}
+.hero-card .marquee-shell{z-index:2}
+
+@font-face{font-family:'MDC Brand';font-style:normal;font-weight:800;font-display:swap;src:url("assets/montserrat-extrabold.ttf") format('truetype')}
+.brand-text{font-family:'MDC Brand',Montserrat,Arial,sans-serif;font-size:17px;font-weight:800;letter-spacing:-.4px;line-height:1.15;text-transform:uppercase}
+@media(max-width:360px){.brand-text{font-size:15px}}
+
+/* —— Footer —— */
+.site-foot{padding:22px 16px 18px;border-top:1px solid #f0f0f0;text-align:center;font-size:12px;color:#666}
+.foot-brand{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px}
+.foot-brand img{width:28px;height:28px;border-radius:7px}
+.foot-brand b{font-family:'MDC Brand',Montserrat,Arial,sans-serif;font-size:14px;color:#111;letter-spacing:-.2px}
+.site-foot a{color:#111;font-weight:700;text-decoration:none}
+.foot-legal{font-size:10.5px;color:#999;line-height:1.5;margin-top:10px}
+
+/* —— Desktop / PC layout —— */
+@media(min-width:960px){
+  body{padding:0;background:#f2f2f2}
+  .app{max-width:1120px;box-shadow:0 0 60px rgba(0,0,0,.08);padding-bottom:110px}
+  .top{height:68px;padding:0 32px}
+  .brand-logo{width:44px;height:44px}
+  .brand-text{font-size:20px}
+  .secure{font-size:12px;padding:7px 12px}
+  .pad{padding:0 32px}
+  .hero{padding:28px 0 8px}
+  .hero-card{padding:56px 52px 48px;min-height:420px;border-radius:28px}
+  .hero-card::before{width:420px;height:420px;border-width:64px;right:-160px;top:-160px}
+  .hero-card::after{width:300px;height:300px;right:-80px;bottom:-140px}
+  .hero h1{font-size:64px;letter-spacing:-2.6px;margin-top:22px}
+  .hero p{font-size:17px;max-width:560px;margin-top:16px}
+  .app-bubble{width:52px;height:52px;border-radius:13px}
+  .price-line strong{font-size:36px}
+  .price-line small{font-size:14px}
+  .cta{width:auto;min-width:260px;height:54px;padding:0 32px;font-size:16px}
+  .quick span{font-size:12.5px;padding:7px 12px}
+  .reseller{font-size:13px}
+  .trust-pills{justify-content:center;padding-top:20px}
+  .trust-pills span{font-size:13px}
+  .section{padding:52px 0}
+  .h{font-size:32px;letter-spacing:-1px;text-align:center}
+  .sub{font-size:15px;text-align:center;margin-top:8px}
+  .feature-grid,.why-grid{grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+  .feature,.why-card{padding:22px 20px;min-height:150px}
+  .feature strong,.why-card b{font-size:15px}
+  .feature p,.why-card span{font-size:13px}
+  .app-strip{margin-top:28px;gap:18px}
+  .app-item{width:88px;flex:0 0 88px}
+  .app-item div{width:64px;height:64px}
+  .app-item span{font-size:12px}
+  .plans{flex-direction:row;gap:16px;margin-top:30px}
+  .plan{flex:1;flex-direction:column;align-items:flex-start;justify-content:space-between;min-height:190px;padding:26px 22px}
+  .pp{text-align:left;margin:22px 0 0}
+  .pp strong{font-size:26px;letter-spacing:-.6px}
+  .pp span{font-size:12px}
+  .pn{font-size:17px}
+  .pd{font-size:12.5px}
+  .popular{right:auto;left:22px;font-size:10px;padding:5px 8px}
+  .plan:hover{border-color:#999}
+  .why-guarantee,.why-reseller,.how-note,.diff-bottom{max-width:820px;margin-left:auto;margin-right:auto}
+  .why-guarantee{margin-top:20px;padding:22px}
+  .how-steps{flex-direction:row;gap:16px;margin-top:28px}
+  .how-step{flex:1;flex-direction:column;padding:22px 20px}
+  .how-step b{font-size:15px}
+  .how-step span{font-size:13px}
+  .how-note{margin-top:18px;font-size:13px;text-align:center}
+  .faq-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;align-items:start}
+  .faq-q{font-size:14.5px;padding:18px}
+  .faq-a p{font-size:13.5px;padding:0 18px 18px}
+  .problem-card,.solution-card{max-width:820px;margin-left:auto;margin-right:auto;padding:22px}
+  .problem-card b,.solution-card b{font-size:15px}
+  .problem-card span,.solution-card span{font-size:13px}
+  .diff-head,.diff-list{max-width:820px;margin-left:auto;margin-right:auto}
+  .diff-head{margin-top:28px}
+  .diff-side b{font-size:14px}
+  .view-reviews{max-width:420px;margin:24px auto 0;height:50px;font-size:14.5px}
+  .final{padding:60px 0 24px}
+  .final h2{font-size:44px;letter-spacing:-1.6px}
+  .final p{font-size:16px;max-width:460px}
+  .final .cta{max-width:none}
+  .site-foot{padding:30px 32px 26px;font-size:13px}
+  .bottom{max-width:1120px;padding-left:32px;padding-right:32px}
+  .selected-info strong{font-size:22px}
+  .buy{height:52px;padding:0 34px;font-size:15px}
+  .wa-support{bottom:100px;right:24px}
+  .modal,.promo-modal{align-items:center}
+  .sheet,.promo-sheet{border-radius:22px;max-width:460px}
+}
+
+/* —— Trust popup —— */
+.trust-modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(8,8,12,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.trust-modal.open{display:flex}
+.trust-card{position:relative;width:100%;max-width:380px;border-radius:26px;padding:26px 20px 20px;color:#fff;text-align:center;overflow:hidden;
+  background:radial-gradient(120% 80% at 100% 0%,rgba(124,58,237,.55),transparent 60%),radial-gradient(90% 70% at 0% 100%,rgba(236,72,153,.35),transparent 60%),#0b0b10;
+  box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08);animation:trustIn .45s cubic-bezier(.2,.9,.25,1.2) both}
+@keyframes trustIn{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:none}}
+.trust-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+.trust-logo{display:block;width:58px;height:58px;border-radius:16px;margin:0 auto 12px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 30px rgba(124,58,237,.45)}
+.trust-kicker{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.14em;color:#c4b5fd;background:rgba(167,139,250,.14);border:1px solid rgba(167,139,250,.3);padding:6px 11px;border-radius:999px}
+.trust-nos{display:flex;flex-direction:column;gap:9px;margin:18px 0 16px}
+.trust-no{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);text-align:left;font-size:15px;font-weight:850;letter-spacing:.01em;animation:noIn .5s both}
+.trust-no:nth-child(1){animation-delay:.15s}.trust-no:nth-child(2){animation-delay:.28s}.trust-no:nth-child(3){animation-delay:.41s}
+@keyframes noIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+.trust-x{width:26px;height:26px;border-radius:50%;background:#ef4444;color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900;flex:none;box-shadow:0 0 14px rgba(239,68,68,.55)}
+.trust-yes{padding:16px 14px;border-radius:16px;background:linear-gradient(135deg,#16a34a,#22c55e);box-shadow:0 12px 30px rgba(34,197,94,.35);animation:noIn .5s .56s both}
+.trust-yes .ck{width:34px;height:34px;border-radius:50%;background:#fff;color:#16a34a;display:grid;place-items:center;font-size:18px;font-weight:900;margin:0 auto 8px}
+.trust-yes b{display:block;font-size:12px;letter-spacing:.12em;opacity:.92}
+.trust-yes strong{display:block;font-size:19px;line-height:1.2;margin-top:4px;letter-spacing:-.3px}
+.trust-yes strong span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.trust-cta{width:100%;height:50px;margin-top:16px;border:0;border-radius:14px;background:#fff;color:#0b0b10;font-size:15px;font-weight:850;cursor:pointer;transition:transform .15s}
+.trust-cta:active{transform:scale(.98)}
+.trust-wa{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12.5px;color:#d4d4d8;text-decoration:none;font-weight:650}
+.trust-wa i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+@media(prefers-reduced-motion:reduce){.trust-card,.trust-no,.trust-yes{animation:none}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="canonical" href="https://eman.malikdatacentre.store/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Malik Data Centre">
+<meta property="og:title" content="Adobe Creative Cloud All Apps — Malik Data Centre">
+<meta property="og:description" content="All Apps. One Subscription. Activated on your own email · Full tenure · WhatsApp support. From PKR 2,500.">
+<meta property="og:url" content="https://eman.malikdatacentre.store/">
+<meta property="og:image" content="https://eman.malikdatacentre.store/logo.png">
+<meta name="description" content="Malik Data Centre — Adobe Creative Cloud All Apps in Pakistan. Choose 1, 4, 7 or 12 months, activated on your own email with WhatsApp support. From PKR 2,500.">
+</head>
+<body>
+
+<div class="app">
+  <!-- Header -->
+  <header class="top">
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo.png" alt="Malik Data Centre">
+      <span class="brand-text">Malik Data Centre</span>
+    </div>
+    <div class="secure">✓ Secure Order</div>
+  </header>
+
+  <main class="pad">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-card">
+        <span class="mini">ADOBE CREATIVE CLOUD</span>
+        <h1>All Apps.<br><span>One Subscription.</span></h1>
+        <p>Photoshop, Illustrator, Premiere Pro, After Effects & more — with 4,000 AI credits, 100GB storage & activation on your own email.</p>
+
+        <div class="apps-orbit">
+<div class="app-bubble"><img src="assets/creative-cloud-40.svg?v=2" alt="Creative Cloud"></div>
+<div class="app-bubble"><img src="assets/photoshop-40.svg?v=2" alt="Photoshop"></div>
+<div class="app-bubble"><img src="assets/illustrator-40.svg?v=2" alt="Illustrator"></div>
+<div class="app-bubble"><img src="assets/premiere-pro-40.svg?v=2" alt="Premiere"></div>
+<div class="app-bubble"><img src="assets/after-effects-40.svg?v=2" alt="After Effects"></div>
+<div class="app-bubble"><img src="assets/lightroom-40.svg?v=2" alt="Lightroom"></div>
+<div class="app-bubble"><img src="assets/acrobat-pro-40.svg?v=2" alt="Acrobat"></div>
+<div class="app-bubble"><img src="assets/firefly-icon-55x54.svg" alt="Firefly"></div>
+<div class="app-bubble"><img src="assets/indesign-64.svg" alt="InDesign"></div>
+<div class="app-bubble"><img src="assets/audition-64.svg" alt="Audition"></div>
+<div class="app-bubble"><img src="assets/bridge-64.svg" alt="Bridge"></div>
+<div class="app-bubble"><img src="assets/lightroom-classic-64.svg" alt="Lightroom Classic"></div>
+<div class="app-bubble"><img src="assets/photoshop-express-64.svg" alt="Photoshop Express"></div>
+<div class="app-bubble"><img src="assets/express-64.svg" alt="Adobe Express"></div>
+<div class="app-bubble"><img src="assets/animate-64.svg" alt="Animate"></div>
+<div class="app-bubble"><img src="assets/character-animator-64.svg" alt="Character Animator"></div>
+<div class="app-bubble"><img src="assets/media-encoder-64.svg" alt="Media Encoder"></div>
+<div class="app-bubble"><img src="assets/fresco-64.svg" alt="Fresco"></div>
+<div class="app-bubble"><img src="assets/dreamweaver-64.svg" alt="Dreamweaver"></div>
+<div class="app-bubble"><img src="assets/capture-64.svg" alt="Capture"></div>
+<div class="app-bubble"><img src="assets/fill-and-sign-64.svg" alt="Fill &amp; Sign"></div>
+<div class="app-bubble"><img src="assets/acrobat-scan-64.svg" alt="Adobe Scan"></div>
+
+        </div>
+        <div class="price-line"><small>From</small><strong>PKR 2,500</strong></div>
+        <button class="cta" data-buy><span class="cta-pop">Get Adobe <span class="cta-arrow" aria-hidden="true">→</span></span></button>
+        <div class="quick">
+          <span>✓ Individual Plan</span>
+          <span>✓ Full Tenure</span>
+          <span>✓ Real Support</span>
+        </div>
+        <div class="reseller"><b>✓</b><span>Activated on your own email · Full tenure</span></div>
+      </div>
+    </section>
+
+    <div class="trust-pills">
+      <span>✓ Activated on your email</span>
+      <span>✓ Not a shared account</span>
+      <span>✓ Not a trial account</span>
+      <span>✓ Activation first, then payment</span>
+      <span>✓ 7-day support window</span>
+    </div>
+
+    <!-- Features -->
+    <section class="section">
+      <div class="h">What’s Included</div>
+      <div class="sub">Everything you get with this Individual Plan.</div>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2L12 3z"/><path d="M9 12h6"/></svg></div>
+          <strong>4,000 AI Credits</strong>
+          <p>Generative AI tools ready to use every month.</p>
+        </div>
+        <div class="feature">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18h10a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 7 8.5 4.5 4.5 0 0 0 7 18z"/></svg></div>
+          <strong>100GB Cloud Storage</strong>
+          <p>Store and sync your creative files safely.</p>
+        </div>
+        <div class="feature">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="16" rx="1.5"/><rect x="13" y="8" width="7" height="12" rx="1.5"/></svg></div>
+          <strong>2 Devices Support</strong>
+          <p>Install and use on up to 2 devices.</p>
+        </div>
+        <div class="feature">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/><circle cx="12" cy="14" r="2"/></svg></div>
+          <strong>Your Own Email</strong>
+          <p>Activated on your Adobe account — not shared.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apps -->
+    <section class="section">
+      <div class="h">Popular Adobe Apps</div>
+      <div class="sub">Explore the suite · swipe or pause to browse</div>
+      <div class="app-strip">
+        <div class="app-item"><div><img src="assets/photoshop-40.svg?v=2" alt=""></div><span>Photoshop</span></div>
+        <div class="app-item"><div><img src="assets/illustrator-40.svg?v=2" alt=""></div><span>Illustrator</span></div>
+        <div class="app-item"><div><img src="assets/premiere-pro-40.svg?v=2" alt=""></div><span>Premiere</span></div>
+        <div class="app-item"><div><img src="assets/after-effects-40.svg?v=2" alt=""></div><span>After Effects</span></div>
+        <div class="app-item"><div><img src="assets/lightroom-40.svg?v=2" alt=""></div><span>Lightroom</span></div>
+        <div class="app-item"><div><img src="assets/acrobat-pro-40.svg?v=2" alt=""></div><span>Acrobat</span></div>
+      <div class="app-item"><div><img src="assets/firefly-icon-55x54.svg" alt=""></div><span>Firefly</span></div><div class="app-item"><div><img src="assets/indesign-64.svg" alt=""></div><span>InDesign</span></div><div class="app-item"><div><img src="assets/audition-64.svg" alt=""></div><span>Audition</span></div><div class="app-item"><div><img src="assets/bridge-64.svg" alt=""></div><span>Bridge</span></div><div class="app-item"><div><img src="assets/lightroom-classic-64.svg" alt=""></div><span>Lightroom Classic</span></div><div class="app-item"><div><img src="assets/photoshop-express-64.svg" alt=""></div><span>Photoshop Express</span></div><div class="app-item"><div><img src="assets/express-64.svg" alt=""></div><span>Adobe Express</span></div><div class="app-item"><div><img src="assets/animate-64.svg" alt=""></div><span>Animate</span></div><div class="app-item"><div><img src="assets/character-animator-64.svg" alt=""></div><span>Character Animator</span></div><div class="app-item"><div><img src="assets/media-encoder-64.svg" alt=""></div><span>Media Encoder</span></div><div class="app-item"><div><img src="assets/fresco-64.svg" alt=""></div><span>Fresco</span></div><div class="app-item"><div><img src="assets/dreamweaver-64.svg" alt=""></div><span>Dreamweaver</span></div><div class="app-item"><div><img src="assets/capture-64.svg" alt=""></div><span>Capture</span></div><div class="app-item"><div><img src="assets/fill-and-sign-64.svg" alt=""></div><span>Fill & Sign</span></div><div class="app-item"><div><img src="assets/acrobat-scan-64.svg" alt=""></div><span>Adobe Scan</span></div></div>
+
+    </section>
+
+    <!-- Plans -->
+    <section class="section" id="plans">
+      <div class="h">Choose Your Plan</div>
+      <div class="sub">Pick the duration that works for you. Full tenure guaranteed.</div>
+      <div class="plans">
+        <div class="plan" data-name="1 Month" data-price="2500">
+          <div class="pl">
+            <div class="radio"></div>
+            <div>
+              <div class="pn">1 Month</div>
+              <div class="pd">Individual Plan</div>
+            </div>
+          </div>
+          <div class="pp"><strong>PKR 2,500</strong><span>1 month</span></div>
+        </div>
+        <div class="plan selected" data-name="4 Months" data-price="6500">
+          <span class="popular">MOST POPULAR</span>
+          <div class="pl">
+            <div class="radio"></div>
+            <div>
+              <div class="pn">4 Months</div>
+              <div class="pd">Best value for regular use</div>
+            </div>
+          </div>
+          <div class="pp"><strong>PKR 6,500</strong><span>4 months</span></div>
+        </div>
+        <div class="plan" data-name="7 Months" data-price="9800">
+          <div class="pl">
+            <div class="radio"></div>
+            <div>
+              <div class="pn">7 Months</div>
+              <div class="pd">Individual Plan</div>
+            </div>
+          </div>
+          <div class="pp"><strong>PKR 9,800</strong><span>7 months</span></div>
+        </div>
+        <div class="plan" data-name="12 Months" data-price="16000">
+          <div class="pl">
+            <div class="radio"></div>
+            <div>
+              <div class="pn">12 Months</div>
+              <div class="pd">Best long-term rate</div>
+            </div>
+          </div>
+          <div class="pp"><strong>PKR 16,000</strong><span>12 months</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why us -->
+    <section class="section">
+      <div class="h">Why Buy From Us?</div>
+      <div class="sub">Genuine access. Clear tenure. Real support.</div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.7-3 8-7 10-4-2-7-5.3-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <b>Authentic</b>
+          <span>Genuine Individual Plan on your email</span>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8h9a3 3 0 1 0 0-6H9"/><path d="M19 16h-9a3 3 0 1 0 0 6h5"/></svg></div>
+          <b>Full Tenure</b>
+          <span>Complete purchased period, no early cut-off</span>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 1-2.3-5.7"/><path d="M20 4v7h-7"/></svg></div>
+          <b>7-Day Support</b>
+          <span>Help with activation & account setup</span>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 10h8M8 14h5"/></svg></div>
+          <b>Real Support</b>
+          <span>WhatsApp team that actually replies</span>
+        </div>
+      </div>
+      <div class="why-guarantee">
+        <div class="why-shield"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.7-3 8-7 10-4-2-7-5.3-7-10V6l7-3z"/><path d="M8.5 12l2.2 2.2 4.8-5"/></svg></div>
+        <div>
+          <b>Full Tenure Warranty</b>
+          <span>No unexpected suspension during the purchased term when used as an Individual Plan.</span>
+        </div>
+      </div>
+      <div class="why-reseller">
+        <div class="reseller-check">✓</div>
+        <div>
+          <b>Malik Data Centre — Pakistan</b>
+          <span>Priced for the Pakistan market. Support in Urdu & English.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section">
+      <div class="h">How It Works</div>
+      <div class="sub">Simple activation on your own Adobe account.</div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <div>
+            <b>Choose Your Plan</b>
+            <span>Select the duration and place your order on WhatsApp.</span>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <div>
+            <b>Share Your Email</b>
+            <span>Tell us the Adobe account email you want activated.</span>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <div>
+            <b>We Activate It</b>
+            <span>We apply the subscription to your email for the full term.</span>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">4</div>
+          <div>
+            <b>Check, Then Pay</b>
+            <span>Sign in at adobe.com, confirm it works, then complete payment. Activation first, payment after.</span>
+          </div>
+        </div>
+      </div>
+      <div class="how-note"><b>Important:</b> You do not share a seller login. The plan is activated on the email you provide.</div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="h">Frequently Asked Questions</div>
+      <div class="sub">Everything you need to know before ordering.</div>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q" type="button"><span>Is this a trial?</span><span>+</span></button>
+          <div class="faq-a"><div><p><b>No.</b> This is not a trial. You receive the full subscription for the exact term you purchase.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span>Is this a shared / Team account?</span><span>+</span></button>
+          <div class="faq-a"><div><p><b>No.</b> This is not a shared Team account. It is provided as an Individual Plan on the email you give us.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span>Will I get an Individual account?</span><span>+</span></button>
+          <div class="faq-a"><div><p><b>Yes.</b> The subscription is activated on your preferred email so you can sign in normally on Adobe’s official site.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span>Does access get shut down early?</span><span>+</span></button>
+          <div class="faq-a"><div><p><b>No.</b> The plan is intended to remain active for the full purchased tenure when used as agreed on an Individual basis.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span>Why is the price lower?</span><span>+</span></button>
+          <div class="faq-a"><div><p>Pricing is set for the Pakistan market through local reseller channels, which allows us to offer lower local rates than international list prices.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span>Can I check before paying?</span><span>+</span></button>
+          <div class="faq-a"><div><p><b>Yes.</b> We activate your plan first. You check it on your own account, then you pay. You can also message us on WhatsApp for any clarification.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="section">
+      <div class="h">The Problem With Cheap Shared Accounts</div>
+      <div class="sub">Cheap access often becomes expensive when it keeps breaking.</div>
+      <div class="problem-card">
+        <div class="problem-icon">×</div>
+        <div>
+          <b>Shared / Team Accounts</b>
+          <span>Many sellers give one login to multiple people. That leads to logouts, conflicts, and sudden loss of access.</span>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-top">
+          <div class="solution-icon">✓</div>
+          <div>
+            <b>Our Solution: Your Individual Plan</b>
+            <span>We activate the subscription on your own email for the full purchased term — no shared seller login.</span>
+          </div>
+        </div>
+        <div class="value-note">
+          <strong>Yes, it can cost a little more than the cheapest shared option.</strong>
+          <span>You pay for individual access, clear tenure, and support that actually responds.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Difference -->
+    <section class="section">
+      <div class="h">The Important Difference</div>
+      <div class="sub">See the difference in seconds.</div>
+      <div class="diff-head">
+        <div class="other-head"><span class="xmark">×</span> Other Sellers</div>
+        <div class="us-head"><span class="checkmark">✓</span> Our Subscription</div>
+      </div>
+      <div class="diff-list">
+        <div class="diff-row">
+          <div class="diff-side other"><span class="xmark">×</span><div><small>Access</small><b>Trial / temporary</b></div></div>
+          <div class="diff-side us"><span class="checkmark">✓</span><div><small>Access</small><b>Full subscription</b></div></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-side other"><span class="xmark">×</span><div><small>Account</small><b>Shared account</b></div></div>
+          <div class="diff-side us"><span class="checkmark">✓</span><div><small>Account</small><b>Your Individual Plan</b></div></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-side other"><span class="xmark">×</span><div><small>Expiry</small><b>Unclear end date</b></div></div>
+          <div class="diff-side us"><span class="checkmark">✓</span><div><small>Expiry</small><b>Clear tenure</b></div></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-side other"><span class="xmark">×</span><div><small>Stability</small><b>May stop early</b></div></div>
+          <div class="diff-side us"><span class="checkmark">✓</span><div><small>Stability</small><b>Full purchased term</b></div></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-side other"><span class="xmark">×</span><div><small>Support</small><b>Limited / slow</b></div></div>
+          <div class="diff-side us"><span class="checkmark">✓</span><div><small>Support</small><b>Dedicated WhatsApp</b></div></div>
+        </div>
+      </div>
+      <div class="diff-bottom">
+        <b>Why it matters</b>
+        <span>Cheap shared access is often temporary. We focus on Individual activation, clear duration, and responsive support.</span>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section">
+      <div class="h">Customer Reviews</div>
+      <div class="sub">Ask us on WhatsApp for real customer feedback and proofs.</div>
+      <a class="view-reviews" href="https://wa.me/923445739206?text=Hi%20Malik%20Data%20Centre%2C%20I%20want%20to%20see%20customer%20reviews" target="_blank" rel="noopener">
+        View customer reviews on WhatsApp <span class="cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <!-- Final -->
+    <section class="final">
+      <h2>Create Without Limits.</h2>
+      <p>Get Adobe Creative Cloud All Apps with full tenure and real support.</p>
+      <button class="cta" data-buy><span class="cta-pop">Get My Subscription <span class="cta-arrow" aria-hidden="true">→</span></span></button>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-brand"><img src="assets/logo.png" alt=""><b>MALIK DATA CENTRE</b></div>
+    <p>WhatsApp: <a href="https://wa.me/923445739206" target="_blank" rel="noopener">+92 344 5739206</a> · eman.malikdatacentre.store</p>
+    <p class="foot-legal">© <span id="yr"></span> Malik Data Centre. Adobe, Creative Cloud and the Adobe app names and icons are trademarks of Adobe Inc. Malik Data Centre is an independent seller and is not affiliated with or endorsed by Adobe Inc.</p>
+  </footer>
+
+  <!-- Sticky bar -->
+  <div class="bottom">
+    <div class="bottom-in">
+      <div class="selected-info">
+        <small id="bn">4 MONTHS</small>
+        <strong id="bp">PKR 6,500</strong>
+      </div>
+      <button class="buy" data-buy>Continue <span class="cta-arrow" aria-hidden="true">→</span></button>
+    </div>
+  </div>
+
+  <!-- Trust popup -->
+  <div class="trust-modal" id="trustModal" aria-hidden="true">
+    <div class="trust-card" role="dialog" aria-modal="true" aria-labelledby="trustTitle">
+      <button class="trust-close" id="trustClose" type="button" aria-label="Close">×</button>
+      <img class="trust-logo" src="assets/logo.png" alt="Malik Data Centre">
+      <span class="trust-kicker" id="trustTitle">MALIK DATA CENTRE PROMISE</span>
+      <div class="trust-nos">
+        <div class="trust-no"><span class="trust-x">✕</span>NO TEAM PLAN</div>
+        <div class="trust-no"><span class="trust-x">✕</span>NO LOGOUT ISSUE</div>
+        <div class="trust-no"><span class="trust-x">✕</span>NO SHARED PLAN</div>
+      </div>
+      <div class="trust-yes">
+        <div class="ck">✓</div>
+        <b>WE ARE PROVIDING</b>
+        <strong>INDIVIDUAL PLAN ON YOUR <span>PRIVATE EMAIL</span></strong>
+      </div>
+      <button class="trust-cta" id="trustCta" type="button">View Plans →</button>
+      <a class="trust-wa" href="https://wa.me/923445739206" target="_blank" rel="noopener"><i></i>Questions? Chat on WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Promo modal (10% OFF 12 Months) -->
+  <div class="promo-modal" id="promoModal" aria-hidden="true">
+    <div class="promo-sheet" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+      <button class="promo-close" id="promoClose" type="button" aria-label="Close">×</button>
+      <div class="promo-badge">LIMITED OFFER</div>
+      <h2 id="promoTitle">12 Months Plan<br><span>10% OFF</span></h2>
+      <p class="promo-sub">Enter your email to unlock the discount. Valid for this session only.</p>
+      <div class="promo-price-box">
+        <div>
+          <div class="label">12 Months · Individual</div>
+          <div style="margin-top:4px">
+            <span class="old">PKR 16,000</span>
+            <span class="new">PKR 14,400</span>
+          </div>
+        </div>
+        <div class="save">Save 1,600</div>
+      </div>
+      <div class="promo-field">
+        <label for="promoEmail">Your Email</label>
+        <input id="promoEmail" type="email" placeholder="Enter your email to claim" autocomplete="email">
+      </div>
+      <button class="promo-cta" id="promoClaim" type="button">Claim 10% OFF <span class="cta-arrow" aria-hidden="true">→</span></button>
+      <p class="promo-note">Discount applies only to the 12 Months plan. One claim per session.</p>
+    </div>
+  </div>
+
+  <!-- Checkout modal -->
+  <div class="modal" id="modal">
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+      <div class="sheet-top">
+        <h3 id="orderTitle">Review Order</h3>
+        <button class="close" id="close" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="order">
+        <div class="line"><span>Adobe Creative Cloud</span><strong>All Apps</strong></div>
+        <div class="line"><span>Plan</span><strong id="mn">4 Months</strong></div>
+        <div class="line"><span>AI Credits</span><strong>4,000</strong></div>
+        <div class="line"><span>Cloud Storage</span><strong>100GB</strong></div>
+        <div class="line"><span>Devices</span><strong>2 Devices</strong></div>
+        <div class="line"><span>Account</span><strong>Your Own Email</strong></div>
+        <div class="line total"><span>Total</span><strong id="mp">PKR 6,500</strong></div>
+      </div>
+
+      <div class="checkout-fields">
+        <label>Your Name
+          <input id="customerName" type="text" placeholder="Enter your full name" autocomplete="name">
+        </label>
+        <label>Contact Email
+          <input id="customerEmail" type="email" placeholder="Your contact email" autocomplete="email">
+        </label>
+        <label>Adobe Account Email
+          <input id="preferredEmail" type="email" placeholder="Email where subscription will be activated" autocomplete="email">
+        </label>
+        <div class="checkout-note">The subscription will be activated on the Adobe account email you provide. Activation first — you pay on WhatsApp after your plan is active.</div>
+      </div>
+      <button class="confirm" id="confirm" type="button">Continue on WhatsApp <span class="cta-arrow" aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating WhatsApp -->
+<a class="wa-support" href="https://wa.me/923445739206" target="_blank" rel="noopener" aria-label="WhatsApp Support">
+  <span class="wa-icon"><img src="assets/whatsapp-icon.png" alt=""></span>
+  <b>WhatsApp Support</b>
+</a>
+
+<script src="app.js"></script>
+</body>
+</html>
